@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.API", "TCG.CatalogService.API\TCG.CatalogService.API.csproj", "{9BAE916D-5F55-4A36-942C-1E6A8FF36392}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Domain", "TCG.CatalogService.Domain\TCG.CatalogService.Domain.csproj", "{565FA0DE-9178-464F-8201-FAD7DEF19539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Persitence", "TCG.CatalogService.Persitence\TCG.CatalogService.Persitence.csproj", "{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Application", "TCG.CatalogService.Application\TCG.CatalogService.Application.csproj", "{FE2852CC-F812-4442-ABCF-EE2444088CA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BAE916D-5F55-4A36-942C-1E6A8FF36392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BAE916D-5F55-4A36-942C-1E6A8FF36392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BAE916D-5F55-4A36-942C-1E6A8FF36392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BAE916D-5F55-4A36-942C-1E6A8FF36392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{565FA0DE-9178-464F-8201-FAD7DEF19539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565FA0DE-9178-464F-8201-FAD7DEF19539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565FA0DE-9178-464F-8201-FAD7DEF19539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565FA0DE-9178-464F-8201-FAD7DEF19539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
