@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Persiten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Application", "TCG.CatalogService.Application\TCG.CatalogService.Application.csproj", "{FE2852CC-F812-4442-ABCF-EE2444088CA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.Common", "TCG.Common\TCG.Common\TCG.Common.csproj", "{64B84B44-0F2C-4606-A31C-11EEF433DE8E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +31,5 @@ Global
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64B84B44-0F2C-4606-A31C-11EEF433DE8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64B84B44-0F2C-4606-A31C-11EEF433DE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64B84B44-0F2C-4606-A31C-11EEF433DE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64B84B44-0F2C-4606-A31C-11EEF433DE8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

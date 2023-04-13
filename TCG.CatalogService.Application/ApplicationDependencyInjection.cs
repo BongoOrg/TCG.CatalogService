@@ -5,7 +5,6 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TCG.CatalogService.Application.Consumer;
-using TCG.Common.MassTransit.Messages;
 using TCG.Common.Settings;
 
 namespace TCG.CatalogService.Application;

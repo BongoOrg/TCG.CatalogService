@@ -1,7 +1,5 @@
-using System.Net.Mime;
 using MassTransit;
 using TCG.CatalogService.Application.Contracts;
-using TCG.CatalogService.Application.Pokemon.DTO;
 using TCG.CatalogService.Domain;
 using TCG.Common.MassTransit.Messages;
 
