@@ -6,8 +6,8 @@ using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using TCG.CatalogService.Application.Contracts;
 using TCG.CatalogService.Domain;
-using TCG.CatalogService.Persitence.MongoSettings;
 using TCG.CatalogService.Persitence.Repositories;
+using TCG.Common.Settings;
 
 namespace TCG.CatalogService.Persitence.DependencyInjection;
 

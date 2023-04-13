@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TCG.CatalogService.Domain\TCG.CatalogService.Domain.csproj" />
+      <ProjectReference Include="..\TCG.Common\TCG.Common\TCG.Common.csproj" />
     </ItemGroup>
 
     <ItemGroup>
