@@ -1,3 +1,4 @@
+using MapsterMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using TCG.CatalogService.Application.Contracts;
@@ -11,16 +12,17 @@ public class GetAllItemsHandler : IRequestHandler<GetAllItemsQuery, IEnumerable<
 {
     private readonly IMongoRepository<Item> _repository;
     private readonly ILogger<GetAllItemsHandler> _logger;
-    public GetAllItemsHandler(ILogger<GetAllItemsHandler> logger, IMongoRepository<Item> repository)
+    private readonly IMapper _mapper;
+    public GetAllItemsHandler(ILogger<GetAllItemsHandler> logger, IMongoRepository<Item> repository, IMapper mapper)
     {
         _repository = repository;
         _logger = logger;
+        _mapper = mapper;
     }
     public async Task<IEnumerable<Item>> Handle(GetAllItemsQuery request, CancellationToken cancellationToken)
     {
         try
         {
-            _logger.LogWarning("Search post with id {SearchPostId} not found", request);
             var pokemon = await _repository.GetAllAsync();
 
             return new List<Item>(pokemon);
@@ -41,7 +43,7 @@ public class GetAllItemsHandler : IRequestHandler<GetAllItemsQuery, IEnumerable<
         }
         catch (Exception e)
         {
-            _logger.LogError("Error retrieving search post with id {SearchPostId}: {ErrorMessage}", request, e.Message);
+            _logger.LogError("Error while getting pokemon items", e.Message);
             throw;
         }
     }
