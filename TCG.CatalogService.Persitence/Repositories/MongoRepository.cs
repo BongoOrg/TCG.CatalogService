@@ -12,11 +12,18 @@ public class MongoRepository<T> : IMongoRepository<T> where T: class, IEntity
     {
         _collection = database.GetCollection<T>(collectionName);
     }
-    
-    public Task<IReadOnlyCollection<T>> GetAllAsync()
+
+    public async Task<List<T>> GetAllAsync()
     {
-        return Task.FromResult<IReadOnlyCollection<T>>(new List<T>());
+        return await _collection.Find(s => true).ToListAsync();
     }
+
+    //public Task<IReadOnlyCollection<T>> GetAllAsync()
+    //{
+    //    //await _collection.Find().ToList();
+    //    //var test = Task.FromResult<IReadOnlyCollection<T>>(new List<T>());
+    //    return Task.FromResult<IReadOnlyCollection<T>>(new List<T>());
+    //}
 
     public Task<IReadOnlyCollection<T>> GetAllAsync(Expression<Func<T, bool>> filter)
     {
