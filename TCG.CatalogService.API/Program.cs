@@ -8,9 +8,23 @@ using TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi.Repositories
 using TCG.Common.Externals;
 using TCG.Common.MassTransit;
 
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder
+                            .WithOrigins("http://localhost:8100") // specifying the allowed origin
+                            .WithMethods("GET", "POST", "PUT") // defining the allowed HTTP method
+                            .AllowAnyHeader(); // allowing any header to be sent
+                      });
+});
 
 builder.Services.AddControllers();
 builder.Services.AddApplication();
@@ -33,6 +47,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
