@@ -2,7 +2,7 @@
 {
     public class PokemonResponse
     {
-        public string IdExtention { get; set; }
+        public string IdExtension { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public string Language { get; set; } = "fr";

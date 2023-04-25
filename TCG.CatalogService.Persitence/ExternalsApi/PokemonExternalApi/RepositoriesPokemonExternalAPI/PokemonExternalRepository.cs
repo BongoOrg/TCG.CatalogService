@@ -29,7 +29,7 @@ public class PokemonExternalRepository : IPokemonExternalRepository
             pokemons = pokemonSet.Cards.Select(p =>
             {
                 var item = _mapper.Map<PokemonCardFromJson, Item>(p);
-                item.IdExtention = pokemonSet.Id;
+                item.IdExtension = pokemonSet.Id;
                 return item;
             }).ToList();
             return pokemons;

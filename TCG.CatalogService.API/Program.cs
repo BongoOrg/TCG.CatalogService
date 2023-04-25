@@ -1,12 +1,11 @@
 using MapsterMapper;
+using TCG.Common.Middlewares.MiddlewareException;
 using TCG.CatalogService.Application;
-using TCG.CatalogService.Application.Consumer;
 using TCG.CatalogService.Application.Contracts;
 using TCG.CatalogService.Domain;
 using TCG.CatalogService.Persitence.DependencyInjection;
 using TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi.RepositoriesPokemonExternalAPI;
 using TCG.Common.Externals;
-using TCG.Common.MassTransit;
 
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -53,5 +52,7 @@ app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.ConfigureCustomExceptionMiddleware();
 
 app.Run();
