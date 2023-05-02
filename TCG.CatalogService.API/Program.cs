@@ -6,7 +6,6 @@ using TCG.CatalogService.Domain;
 using TCG.CatalogService.Persitence.DependencyInjection;
 using TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi.RepositoriesPokemonExternalAPI;
 using TCG.Common.Externals;
-using TCG.Common.MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
