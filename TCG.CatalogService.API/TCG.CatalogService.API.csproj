@@ -9,6 +9,8 @@
     <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
     <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
     <ItemGroup>
+        <PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.1.1" />
+        <PackageReference Include="Elasticsearch.Net" Version="7.17.5" />
         <PackageReference Include="MediatR" Version="11.1.0" />
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />

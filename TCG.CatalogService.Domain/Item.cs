@@ -6,8 +6,7 @@ namespace TCG.CatalogService.Domain;
 public class Item : IEntity
 {
     [BsonId]
-    [BsonRepresentation(BsonType.String)]
-    public Guid _id { get; set; }
+    public ObjectId _id { get; set; }
     //IdExtention : base1
     public string IdExtension { get; set; }
     //IdCar : base1-1
