@@ -9,7 +9,7 @@ public class Item : IEntity
     [BsonRepresentation(BsonType.String)]
     public Guid _id { get; set; }
     //IdExtention : base1
-    public string IdExtention { get; set; }
+    public string IdExtension { get; set; }
     //IdCar : base1-1
     public string Name { get; set; }
     public string Image { get; set; }

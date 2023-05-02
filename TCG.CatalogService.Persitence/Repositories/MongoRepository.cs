@@ -12,10 +12,10 @@ public class MongoRepository<T> : IMongoRepository<T> where T: class, IEntity
     {
         _collection = database.GetCollection<T>(collectionName);
     }
-    
-    public Task<IReadOnlyCollection<T>> GetAllAsync()
+
+    public async Task<List<T>> GetAllAsync()
     {
-        return Task.FromResult<IReadOnlyCollection<T>>(new List<T>());
+        return await _collection.Find(s => true).ToListAsync();
     }
 
     public Task<IReadOnlyCollection<T>> GetAllAsync(Expression<Func<T, bool>> filter)
@@ -33,9 +33,9 @@ public class MongoRepository<T> : IMongoRepository<T> where T: class, IEntity
         throw new NotImplementedException();
     }
 
-    public Task CreateAsync(T entity)
+    public async Task CreateAsync(T entity)
     {
-        throw new NotImplementedException();
+        await _collection.InsertOneAsync(entity);
     }
 
     public Task UpdateAsync(T entity)
