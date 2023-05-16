@@ -28,7 +28,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddApplication();
-builder.Services.AddMongo().AddMongoRepository<Item>("Items");
+builder.Services.AddMongoPersistence(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddExternals<IPokemonExternalRepository, PokemonExternalRepository>();

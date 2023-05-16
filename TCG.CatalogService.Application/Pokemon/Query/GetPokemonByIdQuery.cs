@@ -18,10 +18,10 @@ public class GetItemByIdValidator : AbstractValidator<GetPokemonByIdQuery>
 public class GetPokemonByIdQueryHandler : IRequestHandler<GetPokemonByIdQuery, ItemDto>
 {
     private readonly ILogger<GetPokemonByIdQueryHandler> _logger;
-    private readonly IMongoRepository<Item> _repository;
+    private readonly IMongoRepositoryItem _repository;
     private readonly IMapper _mapper;
 
-    public GetPokemonByIdQueryHandler(ILogger<GetPokemonByIdQueryHandler> logger, IMongoRepository<Item> repository, IMapper mapper)
+    public GetPokemonByIdQueryHandler(ILogger<GetPokemonByIdQueryHandler> logger, IMongoRepositoryItem repository, IMapper mapper)
     {
         _logger = logger;
         _repository = repository;

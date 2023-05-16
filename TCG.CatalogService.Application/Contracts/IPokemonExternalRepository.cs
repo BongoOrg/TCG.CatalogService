@@ -6,4 +6,5 @@ public interface IPokemonExternalRepository
 {
     Task<IEnumerable<Item>> GetPokemonCardsExtensionList(string idSet);
     Task<List<List<Item>>> GetAllPokemonCardsBySets();
+    Task<IEnumerable<Extension>> GetPokemonExtensionList();
 }

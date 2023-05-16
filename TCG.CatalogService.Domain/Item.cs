@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace TCG.CatalogService.Domain;
 
-public class Item : IEntity
+public class Item
 {
     [BsonId]
     public ObjectId _id { get; set; }

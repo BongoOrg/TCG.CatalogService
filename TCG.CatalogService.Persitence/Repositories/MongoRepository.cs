@@ -1,16 +1,17 @@
 using System.Linq.Expressions;
 using MongoDB.Driver;
 using TCG.CatalogService.Application.Contracts;
-using TCG.CatalogService.Domain;
 
 namespace TCG.CatalogService.Persitence.Repositories;
 
-public class MongoRepository<T> : IMongoRepository<T> where T: class, IEntity
+public class MongoRepository<T> : IMongoRepository<T> where T: class
 {
-    private readonly IMongoCollection<T> _collection;
-    public MongoRepository(IMongoDatabase database, string collectionName)
+    protected readonly IMongoCollection<T> _collection;
+    protected virtual string CollectionName => typeof(T).Name + "s"; // Convention : nom de la classe + "s"
+
+    public MongoRepository(IMongoDatabase database)
     {
-        _collection = database.GetCollection<T>(collectionName);
+        _collection = database.GetCollection<T>(CollectionName);
     }
 
     public async Task<List<T>> GetAllAsync()
@@ -21,11 +22,6 @@ public class MongoRepository<T> : IMongoRepository<T> where T: class, IEntity
     public Task<IReadOnlyCollection<T>> GetAllAsync(Expression<Func<T, bool>> filter)
     {
         throw new NotImplementedException();
-    }
-
-    public async Task<T> GetAsync(string id)
-    {
-        return await _collection.Find(x => x.IdCard == id).FirstOrDefaultAsync();
     }
 
     public Task<T> GetAsync(Expression<Func<T, bool>> filter)
@@ -51,13 +47,5 @@ public class MongoRepository<T> : IMongoRepository<T> where T: class, IEntity
     public async Task CreateManyAsync(IEnumerable<T> items)
     {
         await _collection.InsertManyAsync(items);
-    }
-}
-
-public static class ExtentionRepo
-{
-    public static bool IsOk(this MongoRepository<Item> test)
-    {
-        return test.Equals(null);
     }
 }

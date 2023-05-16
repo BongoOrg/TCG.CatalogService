@@ -40,6 +40,7 @@ public class PokemonExternalRepository : IPokemonExternalRepository
             throw;
         }
     }
+    
     #region GetAllPokemonCardsBySets
     public async Task<List<List<Item>>> GetAllPokemonCardsBySets()
     {
@@ -57,6 +58,22 @@ public class PokemonExternalRepository : IPokemonExternalRepository
         return pokemonForDb;
     }
     #endregion
+
+    public async Task<IEnumerable<Extension>> GetPokemonExtensionList()
+    {
+        try
+        {
+            HttpClient client = _httpClientFactory.CreateClient();
+            HttpResponseMessage response = await client.GetAsync($"https://api.tcgdex.net/v2/fr/sets/");
+            var responseContent = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<Extension>>(responseContent);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
     internal class CardListDesrializer
     {
