@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.API", "TCG.CatalogService.API\TCG.CatalogService.API.csproj", "{9BAE916D-5F55-4A36-942C-1E6A8FF36392}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG.CatalogService.API", "TCG.CatalogService.API\TCG.CatalogService.API.csproj", "{9BAE916D-5F55-4A36-942C-1E6A8FF36392}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Domain", "TCG.CatalogService.Domain\TCG.CatalogService.Domain.csproj", "{565FA0DE-9178-464F-8201-FAD7DEF19539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG.CatalogService.Domain", "TCG.CatalogService.Domain\TCG.CatalogService.Domain.csproj", "{565FA0DE-9178-464F-8201-FAD7DEF19539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Persitence", "TCG.CatalogService.Persitence\TCG.CatalogService.Persitence.csproj", "{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG.CatalogService.Persitence", "TCG.CatalogService.Persitence\TCG.CatalogService.Persitence.csproj", "{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Application", "TCG.CatalogService.Application\TCG.CatalogService.Application.csproj", "{FE2852CC-F812-4442-ABCF-EE2444088CA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG.CatalogService.Application", "TCG.CatalogService.Application\TCG.CatalogService.Application.csproj", "{FE2852CC-F812-4442-ABCF-EE2444088CA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Tests", "TCG.CatalogService.Tests\TCG.CatalogService.Tests.csproj", "{5AD0DC4C-0303-4161-ABAB-84018A3A2F66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,5 +35,15 @@ Global
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AD0DC4C-0303-4161-ABAB-84018A3A2F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD0DC4C-0303-4161-ABAB-84018A3A2F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD0DC4C-0303-4161-ABAB-84018A3A2F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD0DC4C-0303-4161-ABAB-84018A3A2F66}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {750E9DA7-71BD-4FA3-A109-0782229360E7}
 	EndGlobalSection
 EndGlobal
