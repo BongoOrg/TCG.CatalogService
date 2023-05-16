@@ -27,4 +27,11 @@ public class SearchController : ControllerBase
         var result = await _mediator.Send(new GetItemsByNameQuery(query));
         return Ok(result);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllItem()
+    {
+        var result = await _mediator.Send(new GetItemsByNameQuery(""));
+        return Ok(result);
+    }
 }
