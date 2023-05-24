@@ -43,7 +43,7 @@ namespace TCG.CatalogService.API.Controllers
         }
 
         [HttpPost]
-        [Route("DownloadAllPokemonsCardsImagesFromAllPokemonsSets")]
+        [Route("DownloadAllPokemonsCardsImagesFromDatabase")]
         public async Task<IActionResult> DownloadAllPokemonsCardsImagesFromDatabase()
         {
             var result = await _mediator.Send(new GetAllItemsQuery());
@@ -57,6 +57,23 @@ namespace TCG.CatalogService.API.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("GetAllPokemonsExtensions")]
+        public async Task<IActionResult> GetAllPokemonsExtensions()
+        {
+            var result =  await _mediator.Send(new GetAllPokemonExtensionsQuery());
+
+            return Ok(result);
+        }
+        
+        [HttpPost]
+        [Route("InsertAllPokemonsExtensions")]
+        public async Task<IActionResult> InsertAllPokemonsExtensions()
+        {
+            var result = await _mediator.Send(new InsertPokemonExtensionsCommand());
+            return Ok(result);
         }
     }
 }

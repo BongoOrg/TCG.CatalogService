@@ -5,7 +5,7 @@ namespace TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi;
 
 public class PokemonExtApiHelper
 {
-    private static string DossierRacine { get; } = "D:/TCGPlace";
+    private static string DossierRacine { get; } = "/Users/val/Documents/Pokemons";
     
     private static string DossierPokemon { get; } = DossierRacine + "/Pokemon";
 

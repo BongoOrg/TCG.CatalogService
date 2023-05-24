@@ -5,8 +5,6 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using TCG.CatalogService.Application.Contracts;
-using TCG.CatalogService.Domain;
-using TCG.CatalogService.Persitence.Repositories;
 using TCG.Common.Settings;
 
 namespace TCG.CatalogService.Persitence.DependencyInjection;
@@ -33,16 +31,25 @@ public static class AddMongoRepo
         return services;
     }
 
-    public static IServiceCollection AddMongoRepository<T>(this IServiceCollection services, string collectionName)
-        where T : class, IEntity
+    public static IServiceCollection AddMongoPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        //On vient recurperer le service bdd register juste avant car on veut en plus de lui dire dimplementer IRepo
-        //que on lui passe le nom de la colelction (demande en param de L'impelemnt (MongoRepo)
-        services.AddSingleton<IMongoRepository<T>>(serviceProvider =>
+        // Enregistrer IMongoDatabase
+        services.AddSingleton(serviceProvider =>
         {
-            var database = serviceProvider.GetService<IMongoDatabase>();
-            return new MongoRepository<T>(database, collectionName);
+            var mongoDbSettings = configuration.GetSection("MongoDbSettings").Get<MongoDbSettings>();
+            var serviceSettigns = configuration.GetSection("ServiceSettings").Get<ServiceSettings>();
+            var mongoClient = new MongoClient(mongoDbSettings.ConnectionString);
+            return mongoClient.GetDatabase(serviceSettigns.ServiceName);
         });
+
+        // Enregistrer automatiquement tous les MongoRepository
+        services.Scan(scan => scan
+            .FromApplicationDependencies()
+            .AddClasses(c => c.AssignableTo(typeof(IMongoRepository<>)))
+            .AsMatchingInterface()
+            .WithScopedLifetime());
+
         return services;
     }
+
 }

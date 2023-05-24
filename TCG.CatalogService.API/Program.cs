@@ -6,6 +6,7 @@ using TCG.CatalogService.Domain;
 using TCG.CatalogService.Persitence.DependencyInjection;
 using TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi.RepositoriesPokemonExternalAPI;
 using TCG.Common.Externals;
+using TCG.Common.MassTransit;
 
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -27,14 +28,13 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddApplication();
-builder.Services.AddMongo().AddMongoRepository<Item>("Items");
+builder.Services.AddMongoPersistence(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddExternals<IPokemonExternalRepository, PokemonExternalRepository>();
 builder.Services.AddMapper("PokemonMapping");
 builder.Services.AddScoped<IMapper, ServiceMapper>();
 builder.Services.AddMassTransitWithRabbitMQQQQ();
-
 
 var app = builder.Build();
 

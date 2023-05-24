@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "TCG.CatalogService.Domain": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -7,9 +7,9 @@ namespace TCG.CatalogService.Application.Consumer;
 
 public class PostCreatedConsumer : IConsumer<PostCreated>
 {
-    private readonly IMongoRepository<Item> _repository;
+    private readonly IMongoRepositoryItem _repository;
 
-    public PostCreatedConsumer(IMongoRepository<Item> repository)
+    public PostCreatedConsumer(IMongoRepositoryItem repository)
     {
         _repository = repository;
     }
