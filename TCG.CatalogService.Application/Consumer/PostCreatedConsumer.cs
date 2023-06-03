@@ -19,7 +19,7 @@ public class PostCreatedConsumer : IConsumer<PostCreated>
         var message = context.Message;
 
         var item = await _repository.GetAsync(message.itemId);
-        var response = new PostCreatedResponse(item.Name, item.Image);
+        var response = new PostCreatedResponse(item.Name, item.Image, item.IdExtension, item.LibelleExtension);
         await context.RespondAsync(response);
     }
 }

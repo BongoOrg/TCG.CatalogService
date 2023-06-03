@@ -26,10 +26,17 @@ public class PokemonExternalRepository : IPokemonExternalRepository
             HttpResponseMessage response = await client.GetAsync($"https://api.tcgdex.net/v2/fr/sets/{idSet}");
             var responseContent = await response.Content.ReadAsStringAsync();
             pokemonSet = JsonConvert.DeserializeObject<PokemonSet>(responseContent);
+
+            IEnumerable<Extension> extensions = await GetPokemonExtensionList();
+
+            var searchedExtension = extensions.FirstOrDefault(extension => extension.Id == idSet);
+
+
             pokemons = pokemonSet.Cards.Select(p =>
             {
                 var item = _mapper.Map<PokemonCardFromJson, Item>(p);
                 item.IdExtension = pokemonSet.Id;
+                item.LibelleExtension = searchedExtension.Libelle;
                 return item;
             }).ToList();
             return pokemons;

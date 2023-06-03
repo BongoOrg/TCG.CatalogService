@@ -9,6 +9,7 @@ public class Item
     public ObjectId _id { get; set; }
     //IdExtention : base1
     public string IdExtension { get; set; }
+    public string LibelleExtension { get; set; }
     //IdCar : base1-1
     public string Name { get; set; }
     public string Image { get; set; }
