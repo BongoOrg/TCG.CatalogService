@@ -25,12 +25,16 @@ namespace TCG.CatalogService.Application.Pokemon.Command
             try
             {
                 var pokemonExtensions = await _pokemonExternalRepository.GetPokemonExtensionList();
+                foreach (var item in pokemonExtensions)
+                {
+                    item.Symbole =  (item.Symbole != null) ? item.Symbole + ".png" : item.Symbole;
+                }
                 await _mongoRepository.CreateManyAsync((IEnumerable<Extension>)pokemonExtensions);
                 return Unit.Value;
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Error while adding pokemon item");
+                _logger.LogError(e, "Error while adding pokemons extensions");
                 throw;
             }
         }
