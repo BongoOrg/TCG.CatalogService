@@ -29,6 +29,8 @@ namespace TCG.CatalogService.Domain.ElasticSearchDto
         public string _id { get; set; }
         [PropertyName("IdExtension")]
         public string IdExtension { get; set; }
+        [PropertyName("LibelleExtension")]
+        public string LibelleExtension { get; set; }
         [PropertyName("Name")]
         public string Name { get; set; }
         [PropertyName("Image")]
