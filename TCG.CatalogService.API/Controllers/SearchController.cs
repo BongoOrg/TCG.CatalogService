@@ -21,17 +21,12 @@ public class SearchController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("{query}")]
-    public async Task<IActionResult> GetItem(string query)
+    [HttpGet]
+    public async Task<IActionResult> GetItem([FromQuery] string? query, [FromQuery] string extensions)
     {
-        var result = await _mediator.Send(new GetItemsByNameQuery(query));
+        string[] idExtensionsArray = extensions.Split(",");
+        var result = await _mediator.Send(new GetItemsByNameQuery(query, idExtensionsArray));
         return Ok(result);
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetAllItem()
-    {
-        var result = await _mediator.Send(new GetItemsByNameQuery(""));
-        return Ok(result);
-    }
 }
