@@ -22,10 +22,10 @@ public class SearchController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetItem([FromQuery] string? query, [FromQuery] string extensions)
+    public async Task<IActionResult> GetItem([FromQuery] string? query, [FromQuery] string extensions, [FromQuery] int pageNumber = 0, [FromQuery] int pageSize = 10)
     {
         string[] idExtensionsArray = extensions.Split(",");
-        var result = await _mediator.Send(new GetItemsByNameQuery(query, idExtensionsArray));
+        var result = await _mediator.Send(new GetItemsByNameQuery(query, idExtensionsArray, pageNumber, pageSize));
         return Ok(result);
     }
 

@@ -11,7 +11,7 @@ using TCG.CatalogService.Domain.ElasticSearchDto;
 
 namespace TCG.CatalogService.Application.Pokemon.Query;
 
-public record GetItemsByNameQuery(string query, string[] idExtensions) : MediatR.IRequest<List<ItemDto>>;
+public record GetItemsByNameQuery(string query, string[] idExtensions, int pageNumber, int pageSize) : MediatR.IRequest<List<ItemDto>>;
 
 public class GetItemsByNameValidator : AbstractValidator<GetItemsByNameQuery>
 {
@@ -40,8 +40,8 @@ public class GetItemsByNameQueryHandler : IRequestHandler<GetItemsByNameQuery, L
 
         var searchDescriptor = new SearchDescriptor<ElasticItem>()
      .AllIndices()
-     .From(0)
-     .Size(10)
+     .From(request.pageNumber * request.pageSize)
+     .Size(request.pageSize)
      .Index("items")
      .Query(q => q //Query de base
          .Bool(b => b
