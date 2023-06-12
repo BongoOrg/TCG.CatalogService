@@ -1,18 +1,18 @@
-﻿using MapsterMapper;
+﻿using Asp.Versioning;
+using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
-using TCG.CatalogService.API.Response;
 using TCG.CatalogService.Application.Contracts;
 using TCG.CatalogService.Application.Pokemon.Command;
 using TCG.CatalogService.Application.Pokemon.Query;
 using TCG.CatalogService.Domain;
 using TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi;
 
-namespace TCG.CatalogService.API.Controllers
+namespace TCG.CatalogService.API.Controllers.v2
 {
     [ApiController]
     [Route("[controller]")]
+    [ApiVersion("2.0")]
     public class PokemonController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -48,7 +48,7 @@ namespace TCG.CatalogService.API.Controllers
         {
             var result = await _mediator.Send(new GetAllItemsQuery());
             var pokemons = _mapper.Map<List<Item>>(result);
-            
+
             PokemonExtApiHelper.PrepareToDownload();
 
             foreach (var pokemon in pokemons)
@@ -63,11 +63,11 @@ namespace TCG.CatalogService.API.Controllers
         [Route("GetAllPokemonsExtensions")]
         public async Task<IActionResult> GetAllPokemonsExtensions()
         {
-            var result =  await _mediator.Send(new GetAllPokemonExtensionsQuery());
+            var result = await _mediator.Send(new GetAllPokemonExtensionsQuery());
 
             return Ok(result);
         }
-        
+
         [HttpPost]
         [Route("InsertAllPokemonsExtensions")]
         public async Task<IActionResult> InsertAllPokemonsExtensions()

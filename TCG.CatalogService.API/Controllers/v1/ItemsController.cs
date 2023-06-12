@@ -1,4 +1,4 @@
-using FluentValidation;
+using Asp.Versioning;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -6,10 +6,11 @@ using TCG.CatalogService.API.Response;
 using TCG.CatalogService.Application.Pokemon.Command;
 using TCG.CatalogService.Application.Pokemon.Query;
 
-namespace TCG.CatalogService.API.Controllers;
+namespace TCG.CatalogService.API.Controllers.v1;
 
 [ApiController]
 [Route("[controller]")]
+[ApiVersion("1.0")]
 public class ItemsController : ControllerBase
 {
     private readonly IMediator _mediator;
