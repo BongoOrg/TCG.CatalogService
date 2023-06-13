@@ -30,6 +30,14 @@ public static class ApplicationDependencyInjection
                 ////On recupère la config de seeting json pour rabbitMQ
                 var rabbitMQSettings = config.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
                 configurator.Host(rabbitMQSettings.Host);
+                
+                // Retry policy for consuming messages
+                configurator.UseMessageRetry(retryConfig =>
+                {
+                    // Exponential back-off (second argument is the max retry count)
+                    retryConfig.Exponential(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(3));
+                });
+                
                 //Defnir comment les queues sont crées dans rabbit
                 configurator.ReceiveEndpoint("catalogservice", e =>
                 {
