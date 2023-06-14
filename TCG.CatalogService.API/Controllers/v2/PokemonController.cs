@@ -31,15 +31,8 @@ namespace TCG.CatalogService.API.Controllers.v2
         [Route("ImportAllPokemonsCardsFromAllPokemonsSets")]
         public async Task<IActionResult> ImportAllPokemonsCardsFromAllPokemonsSets()
         {
-            var listePokemonsByExt = await _externalRepository.GetAllPokemonCardsBySets();
-            foreach (var pokemonsByExt in listePokemonsByExt)
-            {
-                foreach (var pokemon in pokemonsByExt)
-                {
-                    await _mediator.Send(new InsertPokemonItemCommand(pokemon));
-                }
-            }
-            return Ok();
+            await _mediator.Send(new InsertAllPokemonsCommand());
+            return CreatedAtAction("InsertAllPokemonsCommand", "");
         }
 
         [HttpPost]

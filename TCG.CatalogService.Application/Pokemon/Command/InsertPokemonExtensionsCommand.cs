@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using TCG.CatalogService.Application.Contracts;
+using TCG.CatalogService.Application.IHelpers;
 using TCG.CatalogService.Domain;
 
 namespace TCG.CatalogService.Application.Pokemon.Command
@@ -12,12 +13,15 @@ namespace TCG.CatalogService.Application.Pokemon.Command
         private readonly ILogger<InsertPokemonExtensionsCommand> _logger;
         private readonly IMongoRepositoryExtension _mongoRepository;
         private readonly IPokemonExternalRepository _pokemonExternalRepository;
+        private readonly IPictureHelper _pictureHelper;
+        private string blobStorageContainerName = "pokemon-extensions";
 
-        public InsertPokemonExtensionsHandler(ILogger<InsertPokemonExtensionsCommand> logger, IMongoRepositoryExtension mongoRepository, IPokemonExternalRepository pokemonExternalRepository)
+        public InsertPokemonExtensionsHandler(ILogger<InsertPokemonExtensionsCommand> logger, IMongoRepositoryExtension mongoRepository, IPokemonExternalRepository pokemonExternalRepository, IPictureHelper pictureHelper)
         {
             _logger = logger;
             _mongoRepository = mongoRepository;
             _pokemonExternalRepository = pokemonExternalRepository;
+            _pictureHelper = pictureHelper;
         }
 
         public async Task<Unit> Handle(InsertPokemonExtensionsCommand request, CancellationToken cancellationToken)
@@ -28,8 +32,16 @@ namespace TCG.CatalogService.Application.Pokemon.Command
                 foreach (var item in pokemonExtensions)
                 {
                     item.Symbole =  (item.Symbole != null) ? item.Symbole + ".png" : item.Symbole;
-                }
-                await _mongoRepository.CreateManyAsync((IEnumerable<Extension>)pokemonExtensions);
+                    if (item.Symbole == null || item.Symbole == string.Empty)
+                    {
+                        item.Symbole = null;
+                    }
+                    else
+                    {
+                        item.Symbole = await _pictureHelper.SavePictureToAzure(item.Id, _pictureHelper.GetBytes(item.Symbole), blobStorageContainerName);
+                    }
+                    await _mongoRepository.CreateAsync(item);
+                };
                 return Unit.Value;
             }
             catch (Exception e)

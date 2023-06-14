@@ -16,13 +16,12 @@ namespace TCG.CatalogService.API.Controllers.v1
     public class PokemonController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IPokemonExternalRepository _externalRepository;
+        
         private readonly IMapper _mapper;
 
-        public PokemonController(IMediator mediator, IPokemonExternalRepository pokemonExternalRepository, IMapper mapper)
+        public PokemonController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
-            _externalRepository = pokemonExternalRepository;
             _mapper = mapper;
         }
 
@@ -31,15 +30,8 @@ namespace TCG.CatalogService.API.Controllers.v1
         [Route("ImportAllPokemonsCardsFromAllPokemonsSets")]
         public async Task<IActionResult> ImportAllPokemonsCardsFromAllPokemonsSets()
         {
-            var listePokemonsByExt = await _externalRepository.GetAllPokemonCardsBySets();
-            foreach (var pokemonsByExt in listePokemonsByExt)
-            {
-                foreach (var pokemon in pokemonsByExt)
-                {
-                    await _mediator.Send(new InsertPokemonItemCommand(pokemon));
-                }
-            }
-            return Ok();
+            await _mediator.Send(new InsertAllPokemonsCommand());
+            return CreatedAtAction("InsertAllPokemonsCommand", "");
         }
 
         [HttpPost]
