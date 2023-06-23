@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.API", "TCG.CatalogService.API\TCG.CatalogService.API.csproj", "{9BAE916D-5F55-4A36-942C-1E6A8FF36392}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG.CatalogService.API", "TCG.CatalogService.API\TCG.CatalogService.API.csproj", "{9BAE916D-5F55-4A36-942C-1E6A8FF36392}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Domain", "TCG.CatalogService.Domain\TCG.CatalogService.Domain.csproj", "{565FA0DE-9178-464F-8201-FAD7DEF19539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG.CatalogService.Domain", "TCG.CatalogService.Domain\TCG.CatalogService.Domain.csproj", "{565FA0DE-9178-464F-8201-FAD7DEF19539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Persitence", "TCG.CatalogService.Persitence\TCG.CatalogService.Persitence.csproj", "{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG.CatalogService.Application", "TCG.CatalogService.Application\TCG.CatalogService.Application.csproj", "{FE2852CC-F812-4442-ABCF-EE2444088CA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG.CatalogService.Application", "TCG.CatalogService.Application\TCG.CatalogService.Application.csproj", "{FE2852CC-F812-4442-ABCF-EE2444088CA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG.CatalogService.Persistence", "TCG.CatalogService.Persistence\TCG.CatalogService.Persistence.csproj", "{783B91B5-0857-4566-8042-B9AC224870B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,13 +25,19 @@ Global
 		{565FA0DE-9178-464F-8201-FAD7DEF19539}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{565FA0DE-9178-464F-8201-FAD7DEF19539}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{565FA0DE-9178-464F-8201-FAD7DEF19539}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF3845BE-4967-4ED3-94C3-30AFF07CC6D5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2852CC-F812-4442-ABCF-EE2444088CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{783B91B5-0857-4566-8042-B9AC224870B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783B91B5-0857-4566-8042-B9AC224870B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783B91B5-0857-4566-8042-B9AC224870B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783B91B5-0857-4566-8042-B9AC224870B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64A63BEE-D4B3-4F16-B968-EE64EABA5DCC}
 	EndGlobalSection
 EndGlobal

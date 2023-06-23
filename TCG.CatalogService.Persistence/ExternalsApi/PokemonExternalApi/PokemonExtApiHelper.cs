@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using TCG.CatalogService.Domain;
 
-namespace TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi;
+namespace TCG.CatalogService.Persistence.ExternalsApi.PokemonExternalApi;
 
 public class PokemonExtApiHelper
 {

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TCG.CatalogService.Application.IHelpers;
-using TCG.CatalogService.Persitence.Helpers;
+using TCG.CatalogService.Persistence.Helpers;
 
-namespace TCG.CatalogService.Persitence.DependencyInjection
+namespace TCG.CatalogService.Persistence.DependencyInjection
 {
     public static class PersistenceDependencyInjection
     {

@@ -6,7 +6,7 @@ using TCG.CatalogService.Application.Contracts;
 using TCG.CatalogService.Application.Pokemon.Command;
 using TCG.CatalogService.Application.Pokemon.Query;
 using TCG.CatalogService.Domain;
-using TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi;
+using TCG.CatalogService.Persistence.ExternalsApi.PokemonExternalApi;
 
 namespace TCG.CatalogService.API.Controllers.v2
 {

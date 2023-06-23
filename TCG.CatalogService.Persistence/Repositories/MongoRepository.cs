@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using MongoDB.Driver;
 using TCG.CatalogService.Application.Contracts;
 
-namespace TCG.CatalogService.Persitence.Repositories;
+namespace TCG.CatalogService.Persistence.Repositories;
 
 public class MongoRepository<T> : IMongoRepository<T> where T: class
 {

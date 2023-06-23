@@ -2,9 +2,9 @@ using Mapster;
 using MapsterMapper;
 using Microsoft.Extensions.DependencyInjection;
 using TCG.CatalogService.Domain;
-using TCG.CatalogService.Persitence.ExternalsApi.ModelsExternals;
+using TCG.CatalogService.Persistence.ExternalsApi.ModelsExternals;
 
-namespace TCG.CatalogService.Persitence.DependencyInjection;
+namespace TCG.CatalogService.Persistence.DependencyInjection;
 
 public static class AddMapping
 {

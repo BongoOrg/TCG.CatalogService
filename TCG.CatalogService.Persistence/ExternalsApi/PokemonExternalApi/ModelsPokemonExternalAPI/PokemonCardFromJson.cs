@@ -1,6 +1,6 @@
 using SharpCompress.Compressors.PPMd;
 
-namespace TCG.CatalogService.Persitence.ExternalsApi.ModelsExternals;
+namespace TCG.CatalogService.Persistence.ExternalsApi.ModelsExternals;
 
 public class PokemonCardFromJson
 {

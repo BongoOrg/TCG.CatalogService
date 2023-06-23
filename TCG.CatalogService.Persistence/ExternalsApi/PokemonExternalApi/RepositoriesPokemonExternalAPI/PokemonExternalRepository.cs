@@ -1,10 +1,10 @@
 using Newtonsoft.Json;
 using TCG.CatalogService.Application.Contracts;
 using TCG.CatalogService.Domain;
-using TCG.CatalogService.Persitence.ExternalsApi.ModelsExternals;
+using TCG.CatalogService.Persistence.ExternalsApi.ModelsExternals;
 using MapsterMapper;
 
-namespace TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi.RepositoriesPokemonExternalAPI;
+namespace TCG.CatalogService.Persistence.ExternalsApi.PokemonExternalApi.RepositoriesPokemonExternalAPI;
 
 public class PokemonExternalRepository : IPokemonExternalRepository
 {

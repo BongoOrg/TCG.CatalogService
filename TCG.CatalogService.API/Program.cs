@@ -2,8 +2,8 @@ using MapsterMapper;
 using TCG.Common.Middlewares.MiddlewareException;
 using TCG.CatalogService.Application;
 using TCG.CatalogService.Application.Contracts;
-using TCG.CatalogService.Persitence.DependencyInjection;
-using TCG.CatalogService.Persitence.ExternalsApi.PokemonExternalApi.RepositoriesPokemonExternalAPI;
+using TCG.CatalogService.Persistence.DependencyInjection;
+using TCG.CatalogService.Persistence.ExternalsApi.PokemonExternalApi.RepositoriesPokemonExternalAPI;
 using TCG.Common.Externals;
 using TCG.Common.Versioning.SwaggerConfig;
 using Asp.Versioning.ApiExplorer;
@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
                       builder =>
                       {
                           builder
-                            .WithOrigins("http://localhost:8100") // specifying the allowed origin
+                            .WithOrigins("*") // specifying the allowed origin
                             .WithMethods("GET", "POST", "PUT") // defining the allowed HTTP method
                             .AllowAnyHeader(); // allowing any header to be sent
                       });
@@ -88,7 +88,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors(MyAllowSpecificOrigins);
 

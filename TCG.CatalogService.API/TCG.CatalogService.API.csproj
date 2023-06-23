@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+    <!-- <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " /> -->
     <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
     <ItemGroup>
         <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.0.0" />
@@ -15,13 +15,13 @@
         <PackageReference Include="MediatR" Version="11.1.0" />
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-        <PackageReference Include="TCG.Common" Version="1.3.20" />
+        <PackageReference Include="TCG.Common" Version="1.3.30" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\TCG.CatalogService.Application\TCG.CatalogService.Application.csproj" />
       <ProjectReference Include="..\TCG.CatalogService.Domain\TCG.CatalogService.Domain.csproj" />
-      <ProjectReference Include="..\TCG.CatalogService.Persitence\TCG.CatalogService.Persitence.csproj" />
+      <ProjectReference Include="..\TCG.CatalogService.Persistence\TCG.CatalogService.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@ using Azure.Storage.Blobs.Models;
 using System.Net;
 using TCG.CatalogService.Application.IHelpers;
 
-namespace TCG.CatalogService.Persitence.Helpers
+namespace TCG.CatalogService.Persistence.Helpers
 {
     public class PictureHelper : IPictureHelper
     {

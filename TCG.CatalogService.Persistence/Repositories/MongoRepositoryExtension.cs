@@ -2,7 +2,7 @@ using MongoDB.Driver;
 using TCG.CatalogService.Application.Contracts;
 using TCG.CatalogService.Domain;
 
-namespace TCG.CatalogService.Persitence.Repositories;
+namespace TCG.CatalogService.Persistence.Repositories;
 
 public class MongoRepositoryExtension : MongoRepository<Extension>, IMongoRepositoryExtension
 {

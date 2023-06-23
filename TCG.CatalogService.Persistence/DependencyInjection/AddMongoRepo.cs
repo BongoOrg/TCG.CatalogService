@@ -7,7 +7,7 @@ using MongoDB.Driver;
 using TCG.CatalogService.Application.Contracts;
 using TCG.Common.Settings;
 
-namespace TCG.CatalogService.Persitence.DependencyInjection;
+namespace TCG.CatalogService.Persistence.DependencyInjection;
 
 public static class AddMongoRepo
 {
