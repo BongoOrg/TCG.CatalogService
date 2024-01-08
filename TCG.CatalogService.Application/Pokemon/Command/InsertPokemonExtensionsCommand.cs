@@ -15,6 +15,7 @@ namespace TCG.CatalogService.Application.Pokemon.Command
         private readonly IPokemonExternalRepository _pokemonExternalRepository;
         private readonly IPictureHelper _pictureHelper;
         private string blobStorageContainerName = "pokemon-extensions";
+        private string AWSStorageContainerName = "tcgplacebucket";
 
         public InsertPokemonExtensionsHandler(ILogger<InsertPokemonExtensionsCommand> logger, IMongoRepositoryExtension mongoRepository, IPokemonExternalRepository pokemonExternalRepository, IPictureHelper pictureHelper)
         {
@@ -38,7 +39,7 @@ namespace TCG.CatalogService.Application.Pokemon.Command
                     }
                     else
                     {
-                        item.Symbole = await _pictureHelper.SavePictureToAzure(item.Id, _pictureHelper.GetBytes(item.Symbole), blobStorageContainerName);
+                        item.Symbole = await _pictureHelper.SavePictureToAWSS3(item.Id, _pictureHelper.GetBytes(item.Symbole), AWSStorageContainerName);
                     }
                     await _mongoRepository.CreateAsync(item);
                 };

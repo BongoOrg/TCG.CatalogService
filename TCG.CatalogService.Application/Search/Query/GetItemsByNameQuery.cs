@@ -33,7 +33,7 @@ public class GetItemsByNameQueryHandler : IRequestHandler<GetItemsByNameQuery, L
     public async Task<List<ItemDto>> Handle(GetItemsByNameQuery request, CancellationToken cancellationToken)
     {
 
-        var settings = new ConnectionSettings(new Uri("http://51.145.249.188:9200"))
+        var settings = new ConnectionSettings(new Uri("http://51.210.180.174:9200"))
         .DefaultIndex("items");
 
         var client = new ElasticClient(settings);

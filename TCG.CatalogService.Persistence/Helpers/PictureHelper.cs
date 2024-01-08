@@ -2,11 +2,97 @@
 using Azure.Storage.Blobs.Models;
 using System.Net;
 using TCG.CatalogService.Application.IHelpers;
+using Amazon;
+using Amazon.S3;
+using Amazon.S3.Model;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace TCG.CatalogService.Persistence.Helpers
 {
     public class PictureHelper : IPictureHelper
     {
+
+
+
+        public async Task<string> SavePictureToOVHS3(string nomFichier, byte[] imageBytes, string bucketName)
+        {
+            // Ces valeurs doivent être définies en fonction de votre configuration OVH.
+            string accessKey = "241a816ca43349f69ecb9da5c1e5d733";
+            string secretKey = "6b8fc455dfb3477e9891d28db02a1d3b";
+            string serviceUrl = "https://s3.gra.io.cloud.ovh.net/"; // Remplacez par l'URL appropriée si nécessaire.
+
+            var config = new AmazonS3Config
+            {
+                ServiceURL = serviceUrl,
+                ForcePathStyle = true,
+                AuthenticationRegion = "gra",
+            };
+            using var client = new AmazonS3Client(accessKey, secretKey, config);
+
+            try
+            {
+                using var stream = new MemoryStream(imageBytes);
+                var putRequest = new PutObjectRequest
+                {
+                    BucketName = bucketName,
+                    Key = nomFichier + ".webp",
+                    InputStream = stream,
+                    ContentType = "image/webp"
+                };
+
+                //await client.PutObjectAsync(putRequest);
+
+                return $"https://tcgplaceblob.s3.gra.io.cloud.ovh.net/{nomFichier}.webp";
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<string> SavePictureToAWSS3(string nomFichier, byte[] imageBytes, string bucketName)
+        {
+            // Remplacez par vos clés d'accès AWS.
+            string accessKey = "AKIAZFLO6JSTD2J5PZGG";
+            string secretKey = "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";
+            string serviceUrl = "https://s3.eu-north-1.amazonaws.com"; // Remplacez par l'URL de service correspondant à votre région AWS.
+
+            var config = new AmazonS3Config
+            {
+                ServiceURL = serviceUrl,
+                ForcePathStyle = true,
+                // La région d'authentification peut être différente en fonction de votre bucket
+                AuthenticationRegion = "eu-north-1",
+            };
+            using var client = new AmazonS3Client(accessKey, secretKey, config);
+
+            try
+            {
+                using var stream = new MemoryStream(imageBytes);
+                var putRequest = new PutObjectRequest
+                {
+                    BucketName = bucketName,
+                    Key = nomFichier + ".webp",
+                    InputStream = stream,
+                    ContentType = "image/webp"
+                };
+
+                // Exécutez l'opération d'upload
+                await client.PutObjectAsync(putRequest);
+
+                // Construisez l'URL de l'image. Cette URL dépendra de votre configuration de bucket S3
+                return $"https://{bucketName}.s3.eu-north-1.amazonaws.com/{nomFichier}.webp";
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
+
         private string blobStorageConnectionString =
             "DefaultEndpointsProtocol=https;AccountName=cscimagestore;AccountKey=os+cJJGnsCQ5/b4e1XoJg4s4g3PF+rdFZiz+PE4U1UTpykRSIZHCK31P7QDVErs36/8Tswbexuf6+AStI0cFKQ==;EndpointSuffix=core.windows.net";
         

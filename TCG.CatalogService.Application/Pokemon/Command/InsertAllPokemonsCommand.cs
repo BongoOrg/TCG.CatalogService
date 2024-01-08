@@ -18,6 +18,8 @@ namespace TCG.CatalogService.Application.Pokemon.Command
         private readonly IPokemonExternalRepository _externalRepository;
         private readonly IPictureHelper _pictureHelper;
         private string blobStorageContainerName = "pokemon-references";
+        private string OvhStorageContainerName = "tcgplaceblob";
+        private string AWSStorageContainerName = "tcgplacebucket";
 
         public InsertAllPokemonsHandler(ILogger<GetAllItemsQuery> logger, IMongoRepository<Item> mongoRepository, IPokemonExternalRepository pokemonExternalRepository, IPictureHelper pictureHelper)
         {
@@ -42,7 +44,7 @@ namespace TCG.CatalogService.Application.Pokemon.Command
                         }
                         else
                         {
-                            pokemon.Image =  await _pictureHelper.SavePictureToAzure(pokemon.IdCard, _pictureHelper.GetBytes(pokemon.Image + "/high.webp"), blobStorageContainerName);
+                            pokemon.Image =  await _pictureHelper.SavePictureToAWSS3(pokemon.IdCard, _pictureHelper.GetBytes(pokemon.Image + "/high.webp"), AWSStorageContainerName);
                         }                        
                         await _mongoRepository.CreateAsync(pokemon);
                     }
