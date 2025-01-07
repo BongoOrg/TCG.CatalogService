@@ -15,7 +15,7 @@ namespace TCG.CatalogService.Application.Pokemon.Command
         private readonly IPokemonExternalRepository _pokemonExternalRepository;
         private readonly IPictureHelper _pictureHelper;
         private string blobStorageContainerName = "pokemon-extensions";
-        private string AWSStorageContainerName = "tcgplacebucket";
+        private string AWSStorageContainerName = "tcg-bucket-images";
 
         public InsertPokemonExtensionsHandler(ILogger<InsertPokemonExtensionsCommand> logger, IMongoRepositoryExtension mongoRepository, IPokemonExternalRepository pokemonExternalRepository, IPictureHelper pictureHelper)
         {
@@ -27,12 +27,14 @@ namespace TCG.CatalogService.Application.Pokemon.Command
 
         public async Task<Unit> Handle(InsertPokemonExtensionsCommand request, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Starting pokemon extension insertion process ...");
             try
-            {
+            { 
+                _logger.LogInformation("Fetching pokemon extension ...");
                 var pokemonExtensions = await _pokemonExternalRepository.GetPokemonExtensionList();
                 foreach (var item in pokemonExtensions)
                 {
-                    item.Symbole =  (item.Symbole != null) ? item.Symbole + ".png" : item.Symbole;
+                    item.Symbole = (item.Symbole != null) ? item.Symbole + ".webp" : item.Symbole;
                     if (item.Symbole == null || item.Symbole == string.Empty)
                     {
                         item.Symbole = null;
@@ -43,12 +45,13 @@ namespace TCG.CatalogService.Application.Pokemon.Command
                     }
                     await _mongoRepository.CreateAsync(item);
                 };
+                _logger.LogInformation("Pokemon extension inserted.");
                 return Unit.Value;
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Error while adding pokemons extensions");
-                throw;
+                var errorMessage = $"Error while adding pokemon extension in {nameof(InsertPokemonExtensionsHandler)}: {e.Message}";
+                throw new Exception(errorMessage, e);
             }
         }
     }

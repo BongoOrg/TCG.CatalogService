@@ -31,6 +31,7 @@ namespace TCG.CatalogService.Application.Pokemon.Query
         }
         public async Task<List<ExtensionDto>> Handle(GetAllPokemonExtensionsQuery request, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Fetching pokemon extension ...");
             try {
                 var pokemonExtensions = await _repository.GetAllAsync();
                 var pokemonExtensionDtos = _mapper.Map<List<ExtensionDto>>(pokemonExtensions);
@@ -38,8 +39,8 @@ namespace TCG.CatalogService.Application.Pokemon.Query
             }
             catch (Exception e)
             {
-                _logger.LogError("Error retrieving pokemon extensions");
-                throw;
+                var errorMessage = $"Error in {nameof(GetAllPokemonExtensionsQueryHandler)}: {e.Message}";
+                throw new Exception(errorMessage, e);
             }
         }
     }

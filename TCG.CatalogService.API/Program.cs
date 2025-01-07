@@ -65,7 +65,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddExternals<IPokemonExternalRepository, PokemonExternalRepository>();
 builder.Services.AddMapper("PokemonMapping");
 builder.Services.AddScoped<IMapper, ServiceMapper>();
-builder.Services.AddPersistence();
+builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddMassTransitWithRabbitMQQQQ();
 
 var app = builder.Build();

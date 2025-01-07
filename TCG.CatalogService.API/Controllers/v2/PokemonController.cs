@@ -32,7 +32,7 @@ namespace TCG.CatalogService.API.Controllers.v2
         public async Task<IActionResult> ImportAllPokemonsCardsFromAllPokemonsSets()
         {
             await _mediator.Send(new InsertAllPokemonsCommand());
-            return CreatedAtAction("InsertAllPokemonsCommand", "");
+            return Ok();
         }
 
         [HttpPost]

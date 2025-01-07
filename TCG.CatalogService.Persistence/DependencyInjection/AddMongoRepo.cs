@@ -19,7 +19,7 @@ public static class AddMongoRepo
         {
             var mongoDbSettings = configuration.GetSection("MongoDbSettings").Get<MongoDbSettings>();
             var serviceSettigns = configuration.GetSection("ServiceSettings").Get<ServiceSettings>();
-            var mongoClient = new MongoClient(mongoDbSettings.ConnectionString);
+            var mongoClient = new MongoClient($"mongodb://{mongoDbSettings.Host}:{mongoDbSettings.Port}/?ssl=false");
             return mongoClient.GetDatabase(serviceSettigns.ServiceName);
         });
 

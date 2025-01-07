@@ -31,7 +31,7 @@ namespace TCG.CatalogService.API.Controllers.v1
         public async Task<IActionResult> ImportAllPokemonsCardsFromAllPokemonsSets()
         {
             await _mediator.Send(new InsertAllPokemonsCommand());
-            return CreatedAtAction("InsertAllPokemonsCommand", "");
+            return Ok();
         }
 
         [HttpPost]
@@ -56,7 +56,6 @@ namespace TCG.CatalogService.API.Controllers.v1
         public async Task<IActionResult> GetAllPokemonsExtensions()
         {
             var result = await _mediator.Send(new GetAllPokemonExtensionsQuery());
-
             return Ok(result);
         }
 

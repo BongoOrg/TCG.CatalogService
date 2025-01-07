@@ -33,26 +33,26 @@ public class GetItemsByNameQueryHandler : IRequestHandler<GetItemsByNameQuery, L
     public async Task<List<ItemDto>> Handle(GetItemsByNameQuery request, CancellationToken cancellationToken)
     {
 
-        var settings = new ConnectionSettings(new Uri("http://51.210.180.174:9200"))
+        var settings = new ConnectionSettings(new Uri("http://192.168.1.95:9200"))
         .DefaultIndex("items");
 
         var client = new ElasticClient(settings);
 
         var searchDescriptor = new SearchDescriptor<ElasticItem>()
-     .AllIndices()
-     .From(request.pageNumber * request.pageSize)
-     .Size(request.pageSize)
-     .Index("items")
-     .Query(q => q //Query de base
-         .Bool(b => b
-             .Must(mu => mu
-                 .MatchPhrasePrefix(m => m
-                     .Field(f => f.Name)
-                     .Query(request.query)
+         .AllIndices()
+         .From(request.pageNumber * request.pageSize)
+         .Size(request.pageSize)
+         .Index("items")
+         .Query(q => q //Query de base
+             .Bool(b => b
+                 .Must(mu => mu
+                     .MatchPhrasePrefix(m => m
+                         .Field(f => f.Name)
+                         .Query(request.query)
+                     )
                  )
              )
-         )
-     );
+         );
 
         // vérifier si le premier élément n'est pas null
         if (request.idExtensions[0] != "undefined")

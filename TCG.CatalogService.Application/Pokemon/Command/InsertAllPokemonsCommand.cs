@@ -19,7 +19,7 @@ namespace TCG.CatalogService.Application.Pokemon.Command
         private readonly IPictureHelper _pictureHelper;
         private string blobStorageContainerName = "pokemon-references";
         private string OvhStorageContainerName = "tcgplaceblob";
-        private string AWSStorageContainerName = "tcgplacebucket";
+        private string AWSStorageContainerName = "tcg-bucket-images";
 
         public InsertAllPokemonsHandler(ILogger<GetAllItemsQuery> logger, IMongoRepository<Item> mongoRepository, IPokemonExternalRepository pokemonExternalRepository, IPictureHelper pictureHelper)
         {

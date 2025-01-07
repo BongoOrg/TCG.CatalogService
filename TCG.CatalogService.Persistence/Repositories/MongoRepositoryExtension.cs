@@ -4,7 +4,7 @@ using TCG.CatalogService.Domain;
 
 namespace TCG.CatalogService.Persistence.Repositories;
 
-public class MongoRepositoryExtension : MongoRepository<Extension>, IMongoRepositoryExtension
+public class  MongoRepositoryExtension : MongoRepository<Extension>, IMongoRepositoryExtension
 {
     public MongoRepositoryExtension(IMongoDatabase database) : base(database)
     {
