@@ -5,5 +5,6 @@
         public string Id { get; set; }
         public string Libelle { get; set; }
         public string Symbole { get; set; }
+        public string Logo { get; set; }
     }
 }

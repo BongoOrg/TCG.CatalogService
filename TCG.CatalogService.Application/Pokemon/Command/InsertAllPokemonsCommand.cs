@@ -17,16 +17,18 @@ namespace TCG.CatalogService.Application.Pokemon.Command
         private readonly IMongoRepository<Item> _mongoRepository;
         private readonly IPokemonExternalRepository _externalRepository;
         private readonly IPictureHelper _pictureHelper;
+        private readonly IPokemonExtApiHelper _pokemonExtApiHelper;
         private string blobStorageContainerName = "pokemon-references";
         private string OvhStorageContainerName = "tcgplaceblob";
         private string AWSStorageContainerName = "tcg-bucket-images";
 
-        public InsertAllPokemonsHandler(ILogger<GetAllItemsQuery> logger, IMongoRepository<Item> mongoRepository, IPokemonExternalRepository pokemonExternalRepository, IPictureHelper pictureHelper)
+        public InsertAllPokemonsHandler(ILogger<GetAllItemsQuery> logger, IPokemonExtApiHelper pokemonExtApiHelper,IMongoRepository<Item> mongoRepository, IPokemonExternalRepository pokemonExternalRepository, IPictureHelper pictureHelper)
         {
             _logger = logger;
             _mongoRepository = mongoRepository;
             _externalRepository = pokemonExternalRepository;
             _pictureHelper = pictureHelper;
+            _pokemonExtApiHelper = pokemonExtApiHelper;
         }
 
         public async Task<Unit> Handle(InsertAllPokemonsCommand request, CancellationToken cancellationToken)
@@ -34,6 +36,7 @@ namespace TCG.CatalogService.Application.Pokemon.Command
             try
             {
                 var listePokemonsByExt = await _externalRepository.GetAllPokemonCardsBySets();
+                _pokemonExtApiHelper.PrepareToDownload();
                  foreach (var pokemonsByExt in listePokemonsByExt)
                 {
                     foreach (var pokemon in pokemonsByExt)
@@ -44,7 +47,9 @@ namespace TCG.CatalogService.Application.Pokemon.Command
                         }
                         else
                         {
-                            pokemon.Image =  await _pictureHelper.SavePictureToAWSS3(pokemon.IdCard, _pictureHelper.GetBytes(pokemon.Image + "/high.webp"), AWSStorageContainerName);
+                            //A changer pour DL sur un Bucket
+                            //pokemon.Image =  await _pictureHelper.SavePictureToAWSS3(pokemon.IdCard, _pictureHelper.GetBytes(pokemon.Image + "/high.webp"), AWSStorageContainerName);
+                            pokemon.Image = _pokemonExtApiHelper.DownloadPokemonCard(pokemon);
                         }                        
                         await _mongoRepository.CreateAsync(pokemon);
                     }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using TCG.CatalogService.Application.IHelpers;
+using TCG.CatalogService.Persistence.ExternalsApi.PokemonExternalApi;
 using TCG.CatalogService.Persistence.Helpers;
 using TCG.Common.Settings;
 
@@ -17,6 +18,7 @@ namespace TCG.CatalogService.Persistence.DependencyInjection
         {
             services.Configure<AWSSettings>(configuration.GetSection("AWSSettings"));
             services.AddSingleton<IPictureHelper, PictureHelper>();
+            services.AddSingleton<IPokemonExtApiHelper, PokemonExtApiHelper>();
             return services;
         }
     }

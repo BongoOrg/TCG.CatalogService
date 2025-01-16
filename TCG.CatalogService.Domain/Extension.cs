@@ -12,5 +12,8 @@ namespace TCG.CatalogService.Domain
 
         [JsonProperty("symbol")]
         public string Symbole { get; set; }
+        
+        [JsonProperty("logo")]
+        public string Logo { get; set; }
     }
 }

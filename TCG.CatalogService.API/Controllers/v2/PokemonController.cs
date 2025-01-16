@@ -35,22 +35,22 @@ namespace TCG.CatalogService.API.Controllers.v2
             return Ok();
         }
 
-        [HttpPost]
-        [Route("DownloadAllPokemonsCardsImagesFromDatabase")]
-        public async Task<IActionResult> DownloadAllPokemonsCardsImagesFromDatabase()
-        {
-            var result = await _mediator.Send(new GetAllItemsQuery());
-            var pokemons = _mapper.Map<List<Item>>(result);
-
-            PokemonExtApiHelper.PrepareToDownload();
-
-            foreach (var pokemon in pokemons)
-            {
-                PokemonExtApiHelper.DownloadPokemonCard(pokemon);
-            }
-
-            return Ok();
-        }
+        // [HttpPost]
+        // [Route("DownloadAllPokemonsCardsImagesFromDatabase")]
+        // public async Task<IActionResult> DownloadAllPokemonsCardsImagesFromDatabase()
+        // {
+        //     var result = await _mediator.Send(new GetAllItemsQuery());
+        //     var pokemons = _mapper.Map<List<Item>>(result);
+        //
+        //     PokemonExtApiHelper.PrepareToDownload();
+        //
+        //     foreach (var pokemon in pokemons)
+        //     {
+        //         PokemonExtApiHelper.DownloadPokemonCard(pokemon);
+        //     }
+        //
+        //     return Ok();
+        // }
 
         [HttpGet]
         [Route("GetAllPokemonsExtensions")]
