@@ -14,6 +14,10 @@ TODO: Describe and show how to build your code and run the tests.
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 
 
+#Simuler le serveur d'images en local
+Dans Documents/Pokemon
+=> http-server --port 8088
+
 If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
